@@ -1,0 +1,21 @@
+function App() {
+  const [item, setItem] = useState({});
+   useEffect(() => {
+      fetch('https://api.adviceslip.com/advice')
+         .then((response) => response.json())
+         .then((data) => {
+            console.log(data.slip);
+            setItem(data.slip);
+            console.log(item)
+         })
+         .catch((err) => {
+            console.log(err.message);
+         });
+   }, []);
+  return (
+    
+    <div className="App">
+      <h1>{String(item)}</h1>   
+    </div>
+  )
+}
